@@ -22,7 +22,7 @@
     localStorage.setItem("deviceId", deviceId);
 
     async function voteForSrikar() {
-      const res = await fetch('http://localhost:3000/vote', {
+      const res = await fetch('https://srikars-campaign-test-backend.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ deviceId })
@@ -38,7 +38,7 @@
     }
 
     async function fetchVotes() {
-      const res = await fetch('http://localhost:3000/votes');
+      const res = await fetch('https://srikars-campaign-test-backend.onrender.com');
       const data = await res.json();
       document.getElementById("vote-count").innerText = data.totalVotes;
     }
