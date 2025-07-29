@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Srikar for Sports Captain</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <meta name="theme-color" content="#0a0a23" />
+  <meta name="description" content="Vote Srikar for Sports Captain – Discipline, Dedication, Domination.">
+  <meta property="og:title" content="Srikar for Sports Captain">
+  <meta property="og:image" content="assets/images/srikar.jpg">
+  <meta property="og:description" content="Support Srikar's campaign. Lead with strength. Play with heart.">
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    let voteCount = 0;
+    const deviceId = localStorage.getItem("deviceId") || crypto.randomUUID();
+    localStorage.setItem("deviceId", deviceId);
+
+    async function voteForSrikar() {
+      const res = await fetch('http://localhost:3000/vote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ deviceId })
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        alert("✅ Vote successful!");
+        document.getElementById("vote-count").innerText = result.totalVotes;
+      } else {
+        alert("⚠️ " + result.message);
+      }
+    }
+
+    async function fetchVotes() {
+      const res = await fetch('http://localhost:3000/votes');
+      const data = await res.json();
+      document.getElementById("vote-count").innerText = data.totalVotes;
+    }
+
+    fetchVotes();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="overlay">
+      <h1 class="hero-title">🏆 Srikar for Sports Captain</h1>
+      <p class="hero-subtitle">Discipline. Dedication. Domination.</p>
+      <a href="#about" class="cta-button">Get to Know Srikar</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <img src="assets/images/srikar.jpg" alt="Srikar" class="profile-img">
+    <div class="about-text">
+      <h2>Meet Srikar</h2>
+      <p>Srikar is more than an athlete — he’s a motivator, team builder, and fierce competitor. He leads by example on and off the field.</p>
+      <blockquote>"I don’t play to participate. I play to WIN — for us all."</blockquote>
+    </div>
+  </section>
+
+  <section id="journey" class="journey">
+    <h2 data-aos="fade-up">The Journey</h2>
+    <div class="timeline">
+      <div class="timeline-card" data-aos="fade-up">
+        <h3>⚽ 2019 - First Kick</h3>
+        <p>Started playing competitive football and showed early signs of leadership on the field.</p>
+      </div>
+      <div class="timeline-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>🏃 2020 - Athletic Captain</h3>
+        <p>Led the inter school athletics team to victory and brought home 4 medals.</p>
+      </div>
+      <div class="timeline-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>🏅 2022 - National Qualifier</h3>
+        <p>Qualified for state-level championships in 2 sports, showing dedication and consistency.</p>
+      </div>
+      <div class="timeline-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>📢 2025 - Leading the Campaign</h3>
+        <p>Now stepping up to become your Sports Captain — with experience, grit, and vision.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-minecraft">
+    <h2>🟩 Srikar’s Strengths</h2>
+    <div class="skills-mc-grid">
+      <div class="mc-slot" style="--i: 1">🛡 Team Leadership</div>
+      <div class="mc-slot" style="--i: 2">💪 Endurance</div>
+      <div class="mc-slot" style="--i: 3">🧠 Strategy</div>
+      <div class="mc-slot" style="--i: 4">📏 Discipline</div>
+      <div class="mc-slot" style="--i: 5">🔥 Motivation</div>
+    </div>
+  </section>
+
+
+  <!-- Goals Section -->
+  <section class="goals">
+    <h2>🏃 Srikar's Vision</h2>
+    <div class="goal-cards">
+      <h1 class="hero-title" data-aos="fade-up">🏆 Srikar for Sports Captain</h1>
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">🎽 Fair Trials for All</div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">🏋️ Better Fitness Culture</div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="300">🥇 More Inter-House Events</div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="400">⚽ Improved Equipment Access</div>
+
+      <img src="assets/images/gallery1.jpg" alt="" data-aos="flip-left">
+    </div>
+  </section>
+
+  <section class="mission-section">
+    <div class="torch left-torch"></div>
+    <div class="mission-scroll">
+      <h2>🔥 Srikar’s Mission</h2>
+      <p>
+        To lead by example, inspire through action, and create an athletic environment
+        where every student is empowered to push limits, build resilience, and rise together
+        as one unstoppable team.
+      </p>
+    </div>
+    <div class="torch right-torch"></div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <h2>📸 Moments in Motion</h2>
+    <div class="gallery-grid">
+      <img src="assets/images/gallery1.jpg" alt="">
+      <img src="assets/images/gallery2.png" alt="">
+      <img src="assets/images/gallery3.png" alt="">
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="support" class="support">
+    <h2>Support Srikar's Campaign</h2>
+    <p>Spread the word. Share the spirit. Let’s win this — together.</p>
+    <div class="support-container">
+      <a class="cta-button" onclick="voteForSrikar()">🎯 Join the Movement</a>
+      <div class="vote-meter">
+        🗳️ Votes: <span id="vote-count">0</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
