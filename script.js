@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const res = await fetch('http://localhost:3000/submit-suggestion', {
+      const res = await fetch('https://script.google.com/macros/s/AKfycbxl6VVI-RQ9UY5bmKIbMGPkyXziXo12mYvksJEnieFDfrtFR7dvhRlsUeoZ081kbkwq/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ suggestion })
